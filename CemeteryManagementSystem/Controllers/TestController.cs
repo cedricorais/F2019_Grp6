@@ -11,14 +11,14 @@ namespace CemeteryManagementSystem.Controllers
     public class TestController : Controller
     {
         // GET: Test
-        public ActionResult Index()
+        public ActionResult TestDb()
         {
             List<TestModel> test = new List<TestModel>();
             test.Add(new TestModel("19-00000", "asd", "asd", "asd"));
             TestDAO testdao = new TestDAO();
             test = testdao.getData();
 
-            return View("Index", test);
+            return View("TestDb", test);
         }
     }
 }

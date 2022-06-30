@@ -20,16 +20,16 @@ namespace CemeteryManagementSystem.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Apply()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Application Form";
 
             return View();
         }
 
-        public ActionResult Test()
+        public ActionResult Login()
         {
-            ViewBag.Message = "Your test page.";
+            ViewBag.Message = "Login";
 
             return View();
         }
