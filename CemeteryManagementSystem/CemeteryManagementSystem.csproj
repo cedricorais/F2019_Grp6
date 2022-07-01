@@ -155,7 +155,7 @@
     <Compile Include="Controllers\ApplyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="DataTest\TestDAO.cs" />
+    <Compile Include="Data\TestDAO.cs" />
     <Compile Include="Models\ApplyModel.cs" />
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="Global.asax.cs">
