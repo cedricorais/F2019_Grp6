@@ -1,7 +1,8 @@
 ﻿@model CemeteryManagementSystem.Models.ApplyModel
 
 @{
-    ViewBag.Title = "Application Form";
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -69,6 +70,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "TestDB")
 </p>

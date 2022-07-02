@@ -156,7 +156,6 @@
     <Compile Include="Data\ApplyDAO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\ApplyModel.cs" />
-    <Compile Include="Models\TestModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,12 +200,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Apply.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Apply\Index.cshtml" />
-    <Content Include="Views\Apply\ShowDetails.cshtml" />
     <Content Include="Views\Apply\TestDb.cshtml" />
+    <Content Include="Views\Apply\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

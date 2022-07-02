@@ -13,7 +13,7 @@ namespace CemeteryManagementSystem.Controllers
         // GET: Apply
         public ActionResult Index()
         {
-            return View();
+            return View(new ApplyModel());
         }
 
         public ActionResult TestDb()
@@ -26,12 +26,28 @@ namespace CemeteryManagementSystem.Controllers
             return View("TestDb", apply);
         }
 
-        public ActionResult ShowDetails(ApplyModel apply)
+        public ActionResult Create(ApplyModel applymodel)
         {
-            if (ModelState.IsValid)
-                return View("ShowDetails", apply);
-            else
-                return View("Index");
+            ApplyDAO applydao = new ApplyDAO();
+            applydao.insertData(applymodel);
+
+            return View("Details", applymodel);
+        }
+
+        public ActionResult Edit(int Id)
+        {
+            ApplyDAO applydao = new ApplyDAO();
+            ApplyModel applymodel = applydao.getAData(Id);
+
+            return View("Index", applymodel);
+        }
+
+        public ActionResult Details(int Id)
+        {
+            ApplyDAO applydao = new ApplyDAO();
+            ApplyModel applymodel = applydao.getAData(Id);
+
+            return View("Details", applymodel);
         }
     }
 }

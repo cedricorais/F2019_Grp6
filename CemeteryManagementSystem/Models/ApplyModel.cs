@@ -45,7 +45,7 @@ namespace CemeteryManagementSystem.Models
         //public string deathDay { get; set; }
 
         [Required]
-        [StringLength(13)]
+        [StringLength(13, MinimumLength = 10)]
         [DisplayName("Contact Number")]
         public string contact { get; set; }
 
@@ -66,6 +66,7 @@ namespace CemeteryManagementSystem.Models
 
         public ApplyModel()
         {
+            Id = -1;
         }
     }
 }
