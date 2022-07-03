@@ -20,34 +20,34 @@ namespace CemeteryManagementSystem.Controllers
         {
             List<ApplyModel> apply = new List<ApplyModel>();
             //apply.Add(new ApplyModel(0, "", "", "", "", "", "", ""));
-            ApplyDAO applydao = new ApplyDAO();
-            apply = applydao.getData();
+            ApplyDAO applyDao = new ApplyDAO();
+            apply = applyDao.getData();
 
             return View("TestDb", apply);
         }
 
-        public ActionResult Create(ApplyModel applymodel)
+        public ActionResult Create(ApplyModel applyModel)
         {
-            ApplyDAO applydao = new ApplyDAO();
-            applydao.insertData(applymodel);
+            ApplyDAO applyDao = new ApplyDAO();
+            applyDao.insertData(applyModel);
 
-            return View("Details", applymodel);
+            return View("Details", applyModel);
         }
 
         public ActionResult Edit(int Id)
         {
-            ApplyDAO applydao = new ApplyDAO();
-            ApplyModel applymodel = applydao.getAData(Id);
+            ApplyDAO applyDao = new ApplyDAO();
+            ApplyModel applyModel = applyDao.getAData(Id);
 
-            return View("Index", applymodel);
+            return View("Index", applyModel);
         }
 
         public ActionResult Details(int Id)
         {
-            ApplyDAO applydao = new ApplyDAO();
-            ApplyModel applymodel = applydao.getAData(Id);
+            ApplyDAO applyDao = new ApplyDAO();
+            ApplyModel applyModel = applyDao.getAData(Id);
 
-            return View("Details", applymodel);
+            return View("Details", applyModel);
         }
     }
 }

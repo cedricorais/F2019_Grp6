@@ -11,7 +11,7 @@ namespace CemeteryManagementSystem.Data
 
         public List<ApplyModel> getData()
         {
-            List<ApplyModel> returnlist = new List<ApplyModel>();
+            List<ApplyModel> returnList = new List<ApplyModel>();
 
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
@@ -30,20 +30,18 @@ namespace CemeteryManagementSystem.Data
                         applymodel.lastName = read.GetString(1);
                         applymodel.firstName = read.GetString(2);
                         applymodel.middleName = read.GetString(3);
-                        applymodel.birthDay = read.GetDateTime(4);
-                        //apply.birthDay = read.GetString(4);
+                        applymodel.birthDate = read.GetDateTime(4);
                         applymodel.gender = read.GetString(5);
-                        applymodel.deathDay = read.GetDateTime(6);
-                        //apply.deathDay = read.GetString(6);
+                        applymodel.deathDate = read.GetDateTime(6);
                         applymodel.contact = read.GetString(7);
 
-                        returnlist.Add(applymodel);
+                        returnList.Add(applymodel);
 
                     }
                 }
             }
 
-            return returnlist;
+            return returnList;
         }
 
         public ApplyModel getAData(int Id)
@@ -58,53 +56,53 @@ namespace CemeteryManagementSystem.Data
                 connect.Open();
                 SqlDataReader read = cmd.ExecuteReader();
 
-                ApplyModel applymodel = new ApplyModel();
+                ApplyModel applyModel = new ApplyModel();
 
                 if (read.HasRows)
                 {
                     while (read.Read())
                     {
-                        applymodel.Id = read.GetInt32(0);
-                        applymodel.lastName = read.GetString(1);
-                        applymodel.firstName = read.GetString(2);
-                        applymodel.middleName = read.GetString(3);
-                        applymodel.birthDay = read.GetDateTime(4);
-                        applymodel.gender = read.GetString(5);
-                        applymodel.deathDay = read.GetDateTime(6);
-                        applymodel.contact = read.GetString(7);
+                        applyModel.Id = read.GetInt32(0);
+                        applyModel.lastName = read.GetString(1);
+                        applyModel.firstName = read.GetString(2);
+                        applyModel.middleName = read.GetString(3);
+                        applyModel.birthDate = read.GetDateTime(4);
+                        applyModel.gender = read.GetString(5);
+                        applyModel.deathDate = read.GetDateTime(6);
+                        applyModel.contact = read.GetString(7);
 
                     }
                 }
 
-                return applymodel;
+                return applyModel;
             }
         }
 
-        public int insertData(ApplyModel applymodel)
+        public int insertData(ApplyModel applyModel)
         {
 
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
                 string sqlQuery = "";
 
-                if(applymodel.Id <= 0)
+                if(applyModel.Id <= 0)
                 {
-                    sqlQuery = "INSERT INTO CUSTOMER VALUES (@lastName, @firstName, @middleName, @birthDay, @gender, @deathDay, @contact)";
+                    sqlQuery = "INSERT INTO CUSTOMER VALUES (@lastName, @firstName, @middleName, @birthDate, @gender, @deathDate, @contact)";
                 }
                 else
                 {
-                    sqlQuery = "UPDATE CUSTOMER SET lastName = @lastName, firstName = @firstName, middleName = @middleName, birthDay = @birthDay, gender = @gender, deathDay = @deathDay, contact = @contact WHERE Id = @Id";
+                    sqlQuery = "UPDATE CUSTOMER SET lastName = @lastName, firstName = @firstName, middleName = @middleName, birthDate = @birthDate, gender = @gender, deathDate = @deathDate, contact = @contact WHERE Id = @Id";
                 }
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, connect);
-                cmd.Parameters.Add("@Id", System.Data.SqlDbType.Text).Value = applymodel.Id;
-                cmd.Parameters.Add("@lastName", System.Data.SqlDbType.Text).Value = applymodel.lastName;
-                cmd.Parameters.Add("@firstName", System.Data.SqlDbType.Text).Value = applymodel.firstName;
-                cmd.Parameters.Add("@middleName", System.Data.SqlDbType.Text).Value = applymodel.middleName;
-                cmd.Parameters.Add("@birthDay", System.Data.SqlDbType.Date).Value = applymodel.birthDay;
-                cmd.Parameters.Add("@gender", System.Data.SqlDbType.Text).Value = applymodel.gender;
-                cmd.Parameters.Add("@deathDay", System.Data.SqlDbType.Date).Value = applymodel.deathDay;
-                cmd.Parameters.Add("@contact", System.Data.SqlDbType.VarChar, 12).Value = applymodel.contact;
+                cmd.Parameters.Add("@Id", System.Data.SqlDbType.Text).Value = applyModel.Id;
+                cmd.Parameters.Add("@lastName", System.Data.SqlDbType.Text).Value = applyModel.lastName;
+                cmd.Parameters.Add("@firstName", System.Data.SqlDbType.Text).Value = applyModel.firstName;
+                cmd.Parameters.Add("@middleName", System.Data.SqlDbType.Text).Value = applyModel.middleName;
+                cmd.Parameters.Add("@birthDate", System.Data.SqlDbType.Date).Value = applyModel.birthDate;
+                cmd.Parameters.Add("@gender", System.Data.SqlDbType.Text).Value = applyModel.gender;
+                cmd.Parameters.Add("@deathDate", System.Data.SqlDbType.Date).Value = applyModel.deathDate;
+                cmd.Parameters.Add("@contact", System.Data.SqlDbType.VarChar, 12).Value = applyModel.contact;
                 connect.Open();
                 
                 int new1 = cmd.ExecuteNonQuery();

@@ -30,8 +30,7 @@ namespace CemeteryManagementSystem.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayName("Date of Birth")]
-        public DateTime birthDay { get; set; }
-        //public string birthDay { get; set; }
+        public DateTime birthDate { get; set; }
 
         [Required]
         [StringLength(6, MinimumLength = 4)]
@@ -41,26 +40,22 @@ namespace CemeteryManagementSystem.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayName("Date of Death")]
-        public DateTime deathDay { get; set; }
-        //public string deathDay { get; set; }
+        public DateTime deathDate { get; set; }
 
         [Required]
         [StringLength(13, MinimumLength = 10)]
         [DisplayName("Contact Number")]
         public string contact { get; set; }
 
-        public ApplyModel(int Id, string lastName, string firstName, string middleName, DateTime birthDay, string gender, DateTime deathDay, string contact)
-        //public ApplyModel(int Id, string lastName, string firstName, string middleName, string birthDay, string gender, string deathDay, string contact)
+        public ApplyModel(int Id, string lastName, string firstName, string middleName, DateTime birthDate, string gender, DateTime deathDate, string contact)
         {
             this.Id = Id;
             this.lastName = lastName;
             this.firstName = firstName;
             this.middleName = middleName;
-            //this.birthDay = Convert.ToDateTime(birthDay);
-            this.birthDay = birthDay;
+            this.birthDate = birthDate;
             this.gender = gender;
-            //this.deathDay = Convert.ToDateTime(deathDay);
-            this.deathDay = deathDay;
+            this.deathDate = deathDate;
             this.contact = contact;
         }
 
