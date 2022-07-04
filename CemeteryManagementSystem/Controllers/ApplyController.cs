@@ -16,14 +16,14 @@ namespace CemeteryManagementSystem.Controllers
             return View(new ApplyModel());
         }
 
-        public ActionResult TestDb()
+        public ActionResult Database()
         {
             List<ApplyModel> apply = new List<ApplyModel>();
             //apply.Add(new ApplyModel(0, "", "", "", "", "", "", ""));
             ApplyDAO applyDao = new ApplyDAO();
             apply = applyDao.getData();
 
-            return View("TestDb", apply);
+            return View("Database", apply);
         }
 
         public ActionResult Create(ApplyModel applyModel)

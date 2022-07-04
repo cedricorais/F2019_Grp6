@@ -203,7 +203,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Apply\Index.cshtml" />
-    <Content Include="Views\Apply\TestDb.cshtml" />
+    <Content Include="Views\Apply\Database.cshtml" />
     <Content Include="Views\Apply\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>

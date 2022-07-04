@@ -4,7 +4,14 @@
     ViewBag.Title = "Application Form";
 }
 
-<h2>Create a new application</h2>
+@if (@Model.Id == -1)
+{
+    <h2>Create a new application</h2>
+}
+else
+{
+    <h2>Edit application</h2>
+}
 
 
 @using (Html.BeginForm("Create", "Apply")) 
@@ -82,7 +89,14 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "TestDb")
+    @if(@Model.Id == -1)
+    {
+        @Html.ActionLink("Back to Home", "../Home/Index")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Database")
+    }
 </div>
 
 @section Scripts {
