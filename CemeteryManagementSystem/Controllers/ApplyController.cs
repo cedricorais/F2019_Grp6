@@ -13,19 +13,38 @@ namespace CemeteryManagementSystem.Controllers
         // GET: Apply
         public ActionResult Index()
         {
-            return View(new ApplyModel());
+            ApplyModel applyModel = new ApplyModel();
+            List<SelectListItem> gender = new List<SelectListItem>();
+            gender.Add(new SelectListItem() { Text = "Male", Value = "Male" });
+            gender.Add(new SelectListItem() { Text = "Female", Value = "Female" });
+            gender.Add(new SelectListItem() { Text = "Other", Value = "Other" });
+            applyModel.applicantGender = new SelectList(gender, "Value", "Text", 0);
+
+            List<SelectListItem> payment = new List<SelectListItem>();
+            payment.Add(new SelectListItem() { Text = "Down Payment", Value = "Down Payment" });
+            payment.Add(new SelectListItem() { Text = "Full Payment", Value = "Full Payment" });
+            applyModel.paymentMethod = new SelectList(payment, "Value", "Text", 0);
+
+            List<SelectListItem> gender2 = new List<SelectListItem>();
+            gender2.Add(new SelectListItem() { Text = "Male", Value = "Male" });
+            gender2.Add(new SelectListItem() { Text = "Female", Value = "Female" });
+            gender2.Add(new SelectListItem() { Text = "Other", Value = "Other" });
+            applyModel.deadGender = new SelectList(gender2, "Value", "Text", 0);
+
+            return View(applyModel);
         }
 
         public ActionResult Database()
         {
-            List<ApplyModel> apply = new List<ApplyModel>();
+            List<ApplyModel> applyList = new List<ApplyModel>();
             //apply.Add(new ApplyModel(0, "", "", "", "", "", "", ""));
             ApplyDAO applyDao = new ApplyDAO();
-            apply = applyDao.getData();
+            applyList = applyDao.getApplicantData();
 
-            return View("Database", apply);
+            return View("Database", applyList);
         }
 
+        [HttpPost]
         public ActionResult Create(ApplyModel applyModel)
         {
             ApplyDAO applyDao = new ApplyDAO();
@@ -33,21 +52,62 @@ namespace CemeteryManagementSystem.Controllers
 
             return View("Details", applyModel);
         }
-
+        
         public ActionResult Edit(int Id)
         {
             ApplyDAO applyDao = new ApplyDAO();
-            ApplyModel applyModel = applyDao.getAData(Id);
+            ApplyModel applyModel = applyDao.get1Data(Id);
 
-            return View("Index", applyModel);
+            if (ModelState.IsValid)
+            {
+                List<SelectListItem> gender = new List<SelectListItem>();
+                gender.Add(new SelectListItem() { Text = "Male", Value = "Male" });
+                gender.Add(new SelectListItem() { Text = "Female", Value = "Female" });
+                gender.Add(new SelectListItem() { Text = "Other", Value = "Other" });
+                applyModel.applicantGender = new SelectList(gender, "Value", "Text", 0);
+
+                List<SelectListItem> payment = new List<SelectListItem>();
+                payment.Add(new SelectListItem() { Text = "Down Payment", Value = "Down Payment" });
+                payment.Add(new SelectListItem() { Text = "Full Payment", Value = "Full Payment" });
+                applyModel.paymentMethod = new SelectList(payment, "Value", "Text", 0);
+
+                List<SelectListItem> gender2 = new List<SelectListItem>();
+                gender2.Add(new SelectListItem() { Text = "Male", Value = "Male" });
+                gender2.Add(new SelectListItem() { Text = "Female", Value = "Female" });
+                gender2.Add(new SelectListItem() { Text = "Other", Value = "Other" });
+                applyModel.deadGender = new SelectList(gender2, "Value", "Text", 0);
+
+                return View("Index", applyModel);
+            }
+            else
+            {
+                return View("Index");
+            }
+        }
+
+        public ActionResult Delete(int Id)
+        {
+            ApplyDAO applyDao = new ApplyDAO();
+            applyDao.Delete(Id);
+            List<ApplyModel> applyList = applyDao.getApplicantData();
+
+            return View("Database", applyList);
         }
 
         public ActionResult Details(int Id)
         {
             ApplyDAO applyDao = new ApplyDAO();
-            ApplyModel applyModel = applyDao.getAData(Id);
+            ApplyModel applyModel = applyDao.get1Data(Id);
 
             return View("Details", applyModel);
+        }
+
+        public ActionResult SearchForLast(string searchTerm)
+        {
+            ApplyDAO applyDao = new ApplyDAO();
+            List<ApplyModel> searchResult = applyDao.searchForLast(searchTerm);
+
+            return View("Database", searchResult);
         }
     }
 }
