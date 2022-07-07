@@ -11,6 +11,10 @@ namespace CemeteryManagementSystem.Models
     public class ApplyModel
     {
         public int Id { get; set; }
+        //public int page { get; set; }
+        //public string Name { get; set; }
+        //public string Lived { get; set; }
+        //public string Area { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 2)]
@@ -74,8 +78,18 @@ namespace CemeteryManagementSystem.Models
         [DataType(DataType.Date)]
         [DisplayName("Date of Death")]
         public DateTime deathDate { get; set; }
-        
-        public ApplyModel(int Id, string applicantLastName, string applicantFirstName, string applicantMiddleName, DateTime applicantBirthDate, SelectList applicantGender, string contact, SelectList paymentMethod, string deadLastName, string deadFirstName, string deadMiddleName, DateTime deadBirthDate, SelectList deadGender, DateTime deathDate)
+
+        public SelectList location { get; set; }
+        [Required]
+        [DisplayName("Location")]
+        public string selectedLocation { get; set; } = "In Process";
+
+        public SelectList floorNSection { get; set; }
+        [Required]
+        [DisplayName("Floor & Section")]
+        public string selectedFloorNSection { get; set; } = "In Process";
+
+        public ApplyModel(int Id, string applicantLastName, string applicantFirstName, string applicantMiddleName, DateTime applicantBirthDate, SelectList applicantGender, string contact, SelectList paymentMethod, string deadLastName, string deadFirstName, string deadMiddleName, DateTime deadBirthDate, SelectList deadGender, DateTime deathDate, SelectList location, SelectList floorNSection)
         {
             this.Id = Id;
 
@@ -93,6 +107,8 @@ namespace CemeteryManagementSystem.Models
             this.deadBirthDate = deadBirthDate;
             this.selectedDeadGender = deadGender.ToString();
             this.deathDate = deathDate;
+            this.selectedLocation = location.ToString();
+            this.selectedFloorNSection = floorNSection.ToString();
         }
 
         public ApplyModel()

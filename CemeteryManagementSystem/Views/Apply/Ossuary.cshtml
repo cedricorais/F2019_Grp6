@@ -1,0 +1,108 @@
+﻿@model IEnumerable<CemeteryManagementSystem.Models.ApplyModel>
+
+@{
+    ViewBag.Title = "Ossuary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Ossuary Databases</h2>
+    <div class="row">
+        <div class="container">
+            <div class="col">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Ossuary I*", "Ossuary", new { page = 1 })</li>
+                    <li>@Html.ActionLink("Ossuary II*", "Ossuary", new { page = 2 })</li>
+                    <li>@Html.ActionLink("Ossuary III*", "Ossuary", new { page = 3 })</li>
+                    <li>@Html.ActionLink("Ossuary IV*", "Ossuary", new { page = 4 })</li>
+                    <li>@Html.ActionLink("Ossuary V*", "Ossuary", new { page = 5 })</li>
+                    <li>@Html.ActionLink("Ossuary VI*", "Ossuary", new { page = 6 })</li>
+                    <li>@Html.ActionLink("Ossuary VII*", "Ossuary", new { page = 7 })</li>
+                    <li>@Html.ActionLink("Ossuary VIII*", "Ossuary", new { page = 8 })</li>
+                    <li>@Html.ActionLink("Ossuary IX*", "Ossuary", new { page = 9 })</li>
+                    <li>@Html.ActionLink("Ossuary X*", "Ossuary", new { page = 10 })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr />*@
+
+<h2>@ViewBag.Title Database</h2>
+<p>
+    @Html.ActionLink("Create New", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deadLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deadFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deadMiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deadBirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectedDeadGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deathDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectedLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.selectedFloorNSection)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.Id)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.deadLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deadFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deadMiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deadBirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.selectedDeadGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deathDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.selectedLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.selectedFloorNSection)
+            </td>
+            <td>
+                @Html.ActionLink("Edit*", "EditOssuary", new { id = item.Id }) |
+                @Html.ActionLink("Details*", "OssuaryDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete*", "DeleteOssuary", new { id = item.Id })
+                @*@Html.ActionLink("Edit*", "EditOssuary", new { id = item.Id, page = item.page }) |
+                @Html.ActionLink("Details*", "OssuaryDetails", new { id = item.Id, page = item.page }) |
+                @Html.ActionLink("Delete*", "DeleteOssuary", new { id = item.Id, page = item.page })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Applicant Database", "Database")

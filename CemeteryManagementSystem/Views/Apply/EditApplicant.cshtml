@@ -1,17 +1,18 @@
 ﻿@model CemeteryManagementSystem.Models.ApplyModel
 
 @{
-    ViewBag.Title = "Create Application Form";
+    ViewBag.Title = "Edit Applicant Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
-<hr />
 
 @using (Html.BeginForm("InsertApplicant", "Apply"))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <p>Applicant's Information</p>
@@ -70,75 +71,18 @@
                 @Html.ValidationMessageFor(model => model.selectedPaymentMethod, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <hr />
-        <p>Deceased's Information</p>
-        <div class="form-group">
-            @Html.LabelFor(model => model.deadLastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.deadLastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.deadLastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.deadFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.deadFirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.deadFirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.deadMiddleName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.deadMiddleName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.deadMiddleName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.deadBirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.deadBirthDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.deadBirthDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.selectedDeadGender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.selectedDeadGender, Model.deadGender, "Select", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.selectedDeadGender, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.deathDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.deathDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.deathDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
         <input type="hidden" name="Id" value="@Model.Id" />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Submit" class="btn btn-primary btn-group" />
+                <input type="submit" value="Save" class="btn btn-primary btn-group" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @if (@Model.Id == -1)
-    {
-        @Html.ActionLink("Return to Home", "../Home/Index")
-    }
-    else
-    {
-        @Html.ActionLink("Return to Applicant Database", "Database")
-    }
+    @Html.ActionLink("Return to Applicant Database", "Database")
 </div>
 
 @section Scripts {

@@ -1,0 +1,217 @@
+﻿@model CemeteryManagementSystem.Models.ApplyModel
+
+@{
+    ViewBag.Title = "Application Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <dl class="dl-horizontal">
+
+        @if (@Model.Id == -1)
+        {
+            <h2>@ViewBag.Title</h2>
+
+            <hr />
+            <p>Applicant's Information</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantLastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantLastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantFirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantFirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantMiddleName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantMiddleName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantBirthDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantBirthDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedApplicantGender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedApplicantGender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedPaymentMethod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedPaymentMethod)
+            </dd>
+
+            <hr />
+            <p>Deceased's Information</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.deadLastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deadLastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.deadFirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deadFirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.deadMiddleName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deadMiddleName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.deadBirthDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deadBirthDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedDeadGender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedDeadGender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.deathDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.deathDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedLocation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedLocation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedFloorNSection)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedFloorNSection)
+            </dd>
+        }
+        else
+        {
+            ViewBag.Title = "Applicant's Information";
+            <h2>@ViewBag.Title</h2>
+            <hr />
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantLastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantLastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantFirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantFirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantMiddleName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantMiddleName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.applicantBirthDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.applicantBirthDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedApplicantGender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedApplicantGender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contact)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contact)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.selectedPaymentMethod)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.selectedPaymentMethod)
+            </dd>
+        }
+
+    </dl>
+</div>
+
+@if (@Model.Id == -1)
+{
+    <p>
+        @Html.ActionLink("Return to Home", "../Home/Index")
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Edit", "EditApplicant", new { id = Model.Id }) |
+        @Html.ActionLink("Return to Applicant Database", "Database")
+    </p>
+}

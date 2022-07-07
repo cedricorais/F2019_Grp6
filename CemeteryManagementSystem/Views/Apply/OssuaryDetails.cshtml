@@ -1,0 +1,93 @@
+﻿@model CemeteryManagementSystem.Models.ApplyModel
+
+@{
+    ViewBag.Title = "Deceased's Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deadLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deadLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deadFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deadFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deadMiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deadMiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deadBirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deadBirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.selectedDeadGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.selectedDeadGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deathDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deathDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.selectedLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.selectedLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.selectedFloorNSection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.selectedFloorNSection)
+        </dd>
+
+    </dl>
+</div>
+
+@if (@Model.Id == -1)
+{
+    <p>
+        @Html.ActionLink("Return to Home", "../Home/Index")
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Edit", "EditOssuary", new { id = Model.Id }) |
+        @Html.ActionLink("Return to Ossuary Database", "Ossuary")
+    </p>
+}

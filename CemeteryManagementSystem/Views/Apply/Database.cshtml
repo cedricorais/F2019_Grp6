@@ -5,8 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Applicant's @ViewBag.Title</h2>
+@*<h2>Ossuary Databases</h2>
+    <div class="row">
+        <div class="container">
+            <div class="col">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Ossuary I*", "Ossuary", new { @page = 1 })</li>
+                    <li>@Html.ActionLink("Ossuary II*", "Ossuary", new { @page = 2 })</li>
+                    <li>@Html.ActionLink("Ossuary III*", "Ossuary", new { @page = 3 })</li>
+                    <li>@Html.ActionLink("Ossuary IV*", "Ossuary", new { @page = 4 })</li>
+                    <li>@Html.ActionLink("Ossuary V*", "Ossuary", new { @page = 5 })</li>
+                    <li>@Html.ActionLink("Ossuary VI*", "Ossuary", new { @page = 6 })</li>
+                    <li>@Html.ActionLink("Ossuary VII*", "Ossuary", new { @page = 7 })</li>
+                    <li>@Html.ActionLink("Ossuary VIII*", "Ossuary", new { @page = 8 })</li>
+                    <li>@Html.ActionLink("Ossuary IX*", "Ossuary", new { @page = 9 })</li>
+                    <li>@Html.ActionLink("Ossuary X*", "Ossuary", new { @page = 10 })</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr />*@
 
+<h2>Applicant @ViewBag.Title</h2>
 <p>
     @Html.ActionLink("Create New", "Index")
 </p>
@@ -39,73 +59,6 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <th>
-            @Html.DisplayFor(modelItem => item.Id)
-        </th>
-        <td>
-            @Html.DisplayFor(modelItem => item.applicantLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.applicantFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.applicantMiddleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.applicantBirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.selectedApplicantGender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contact)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.selectedPaymentMethod)
-        </td>
-        <td>
-            @Html.ActionLink("Edit*", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details*", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
-
-<h2>Ossuary I's @ViewBag.Title*</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Index")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadMiddleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadBirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.selectedDeadGender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deathDate)
-        </th>
-        <th></th>
-    </tr>
-
     @foreach (var item in Model)
     {
         <tr>
@@ -113,31 +66,34 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </th>
             <td>
-                @Html.DisplayFor(modelItem => item.deadLastName)
+                @Html.DisplayFor(modelItem => item.applicantLastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.deadFirstName)
+                @Html.DisplayFor(modelItem => item.applicantFirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.deadMiddleName)
+                @Html.DisplayFor(modelItem => item.applicantMiddleName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.deadBirthDate)
+                @Html.DisplayFor(modelItem => item.applicantBirthDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.selectedDeadGender)
+                @Html.DisplayFor(modelItem => item.selectedApplicantGender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.deathDate)
+                @Html.DisplayFor(modelItem => item.contact)
             </td>
             <td>
-                @Html.ActionLink("Edit*", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details*", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.DisplayFor(modelItem => item.selectedPaymentMethod)
+            </td>
+            <td>
+                @Html.ActionLink("Edit*", "EditApplicant", new { id = item.Id }) |
+                @Html.ActionLink("Details*", "ApplicantDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteApplicant", new { id = item.Id })
             </td>
         </tr>
     }
 
 </table>
 
-@Html.ActionLink("Back to Home", "../Home/Index")
+@Html.ActionLink("Ossuary Database", "Ossuary")

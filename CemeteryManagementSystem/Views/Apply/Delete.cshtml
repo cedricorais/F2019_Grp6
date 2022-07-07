@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string previousUrl = Request.UrlReferrer.PathAndQuery;
+}
+
+<h2>Record has been deleted.</h2>
+<h4>Redirecting...</h4>
+
+<script>
+    window.setTimeout(function () {
+        window.location.href = "@previousUrl";
+    }, 3000); //1ms
+</script>
