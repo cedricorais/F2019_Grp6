@@ -1,13 +1,13 @@
 ﻿@model CemeteryManagementSystem.Models.ApplyModel
 
 @{
-    ViewBag.Title = "Create Application Form";
+    ViewBag.Title = "Create Application";
 }
 
 <h2>@ViewBag.Title</h2>
 <hr />
 
-@using (Html.BeginForm("InsertApplicant", "Apply"))
+@using (Html.BeginForm("ApplicantInsert", "Apply"))
 {
     @Html.AntiForgeryToken()
 
@@ -137,7 +137,7 @@
     }
     else
     {
-        @Html.ActionLink("Return to Applicant Database", "Database")
+        @Html.ActionLink("Return to Applicant Records", "ApplicantRecords")
     }
 </div>
 

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CemeteryManagementSystem.Models.ApplyModel>
 
 @{
-    ViewBag.Title = "Ossuary";
+    ViewBag.Title = "Records";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -26,7 +26,7 @@
     </div>
     <hr />*@
 
-<h2>@ViewBag.Title Database</h2>
+<h2>Ossuary @ViewBag.Title</h2>
 <p>
     @Html.ActionLink("Create New", "Index")
 </p>
@@ -93,9 +93,9 @@
                 @Html.DisplayFor(modelItem => item.selectedFloorNSection)
             </td>
             <td>
-                @Html.ActionLink("Edit*", "EditOssuary", new { id = item.Id }) |
-                @Html.ActionLink("Details*", "OssuaryDetails", new { id = item.Id }) |
-                @Html.ActionLink("Delete*", "DeleteOssuary", new { id = item.Id })
+                @Html.ActionLink("Edit", "OssuaryEdit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "OssuaryDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "OssuaryDelete", new { id = item.Id })
                 @*@Html.ActionLink("Edit*", "EditOssuary", new { id = item.Id, page = item.page }) |
                 @Html.ActionLink("Details*", "OssuaryDetails", new { id = item.Id, page = item.page }) |
                 @Html.ActionLink("Delete*", "DeleteOssuary", new { id = item.Id, page = item.page })*@
@@ -105,4 +105,4 @@
 
 </table>
 
-@Html.ActionLink("Applicant Database", "Database")
+@Html.ActionLink("Applicant Records", "ApplicantRecords")

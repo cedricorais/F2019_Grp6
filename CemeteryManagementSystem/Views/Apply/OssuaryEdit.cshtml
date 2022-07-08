@@ -1,14 +1,14 @@
 ﻿@model CemeteryManagementSystem.Models.ApplyModel
 
 @{
-    ViewBag.Title = "Edit Ossuary Form";
+    ViewBag.Title = "Edit Ossuary Record";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
 <hr />
 
-@using (Html.BeginForm("InsertOssuary", "Apply"))
+@using (Html.BeginForm("OssuaryInsert", "Apply"))
 {
     @Html.AntiForgeryToken()
 
@@ -90,7 +90,7 @@
 }
 
 <div>
-    @Html.ActionLink("Return to Ossuary Database", "Ossuary")
+    @Html.ActionLink("Return to Ossuary Records", "OssuaryRecords")
 </div>
 
 @section Scripts {

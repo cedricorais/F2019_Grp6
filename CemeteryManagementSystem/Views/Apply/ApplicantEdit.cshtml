@@ -1,13 +1,13 @@
 ﻿@model CemeteryManagementSystem.Models.ApplyModel
 
 @{
-    ViewBag.Title = "Edit Applicant Form";
+    ViewBag.Title = "Edit Applicant Record";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("InsertApplicant", "Apply"))
+@using (Html.BeginForm("ApplicantInsert", "Apply"))
 {
     @Html.AntiForgeryToken()
 
@@ -82,7 +82,7 @@
 }
 
 <div>
-    @Html.ActionLink("Return to Applicant Database", "Database")
+    @Html.ActionLink("Return to Applicant Records", "ApplicantRecords")
 </div>
 
 @section Scripts {

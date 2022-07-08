@@ -35,41 +35,55 @@ namespace CemeteryManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertApplicant(ApplyModel applyModel)
+        public ActionResult ApplicantInsert(ApplyModel applyModel)
         {
             ApplyDAO applyDao = new ApplyDAO();
+
+            if (applyModel.applicantMiddleName == null)
+            {
+                applyModel.applicantMiddleName = "";
+            }
+            if (applyModel.deadMiddleName == null)
+            {
+                applyModel.deadMiddleName = "";
+            }
             applyDao.insertApplicantData(applyModel);
 
             return View("ApplicantDetails", applyModel);
         }
 
         [HttpPost]
-        public ActionResult InsertOssuary(ApplyModel applyModel)
+        public ActionResult OssuaryInsert(ApplyModel applyModel)
         {
             ApplyDAO applyDao = new ApplyDAO();
+
+            if (applyModel.deadMiddleName == null)
+            {
+                applyModel.deadMiddleName = "";
+            }
             applyDao.insertOssuaryData(applyModel);
 
             return View("OssuaryDetails", applyModel);
         }
 
         [Authorize]
-        public ActionResult Database()
+        public ActionResult ApplicantRecords()
         {
             List<ApplyModel> applyList = new List<ApplyModel>();
             //apply.Add(new ApplyModel(0, "", "", "", "", "", "", ""));
             ApplyDAO applyDao = new ApplyDAO();
             applyList = applyDao.getApplicantTable();
 
-            return View("Database", applyList);
+            return View("ApplicantRecords", applyList);
         }
 
-        public ActionResult Ossuary()
+        public ActionResult OssuaryRecords()
         {
             List<ApplyModel> applyList = new List<ApplyModel>();
             ApplyDAO applyDao = new ApplyDAO();
             applyList = applyDao.getOssuaryTable();
 
-            return View("Ossuary", applyList);
+            return View("OssuaryRecords", applyList);
         }
 
         //public ActionResult Ossuary(int page)
@@ -126,7 +140,7 @@ namespace CemeteryManagementSystem.Controllers
         //    return View("Ossuary", applyList);
         //}
 
-        public ActionResult EditApplicant(int Id)
+        public ActionResult ApplicantEdit(int Id)
         {
             ApplyDAO applyDao = new ApplyDAO();
             ApplyModel applyModel = applyDao.get1ApplicantData(Id);
@@ -144,7 +158,7 @@ namespace CemeteryManagementSystem.Controllers
                 payment.Add(new SelectListItem() { Text = "Full Payment", Value = "Full Payment" });
                 applyModel.paymentMethod = new SelectList(payment, "Value", "Text", 0);
 
-                return View("EditApplicant", applyModel);
+                return View("ApplicantEdit", applyModel);
             }
             else
             {
@@ -152,7 +166,7 @@ namespace CemeteryManagementSystem.Controllers
             }
         }
 
-        public ActionResult EditOssuary(int Id)
+        public ActionResult OssuaryEdit(int Id)
         {
             ApplyDAO applyDao = new ApplyDAO();
             ApplyModel applyModel = applyDao.get1OssuaryData(Id);
@@ -201,7 +215,7 @@ namespace CemeteryManagementSystem.Controllers
                 floorNSection.Add(new SelectListItem() { Text = "D5", Value = "D5" });
                 applyModel.floorNSection = new SelectList(floorNSection, "Value", "Text", 0);
 
-                return View("EditOssuary", applyModel);
+                return View("OssuaryEdit", applyModel);
             }
             else
             {
@@ -225,7 +239,7 @@ namespace CemeteryManagementSystem.Controllers
             return View("OssuaryDetails", applyModel);
         }
 
-        public ActionResult DeleteApplicant(int Id)
+        public ActionResult ApplicantDelete(int Id)
         {
             ApplyDAO applyDao = new ApplyDAO();
             applyDao.deleteApplicant(Id);
@@ -234,7 +248,7 @@ namespace CemeteryManagementSystem.Controllers
             return View("Delete", applyList);
         }
 
-        public ActionResult DeleteOssuary(int Id)
+        public ActionResult OssuaryDelete(int Id)
         {
             ApplyDAO applyDao = new ApplyDAO();
             applyDao.deleteOssuary(Id);
@@ -243,10 +257,10 @@ namespace CemeteryManagementSystem.Controllers
             return View("Delete", applyList);
         }
 
-        public ActionResult SearchForLast(string searchTerm)
+        public ActionResult SearchForName(string searchTerm)
         {
             ApplyDAO applyDao = new ApplyDAO();
-            List<ApplyModel> searchResult = applyDao.searchForLast(searchTerm);
+            List<ApplyModel> searchResult = applyDao.searchForName(searchTerm);
 
             return View("../Home/Index", searchResult);
         }

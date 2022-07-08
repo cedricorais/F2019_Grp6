@@ -28,7 +28,7 @@ namespace CemeteryManagementSystem.Models
 
         [StringLength(20, MinimumLength = 2)]
         [DisplayName("Middle Name")]
-        public string applicantMiddleName { get; set; }
+        public string applicantMiddleName { get; set; } = null;
 
         [Required]
         [DataType(DataType.Date)]
@@ -62,7 +62,7 @@ namespace CemeteryManagementSystem.Models
 
         [StringLength(20, MinimumLength = 2)]
         [DisplayName("Middle Name")]
-        public string deadMiddleName { get; set; }
+        public string deadMiddleName { get; set; } = null;
 
         [Required]
         [DataType(DataType.Date)]

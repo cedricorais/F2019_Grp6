@@ -224,6 +224,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\CemSys.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -272,12 +273,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Apply\ApplicantDetails.cshtml" />
-    <Content Include="Views\Apply\Database.cshtml" />
+    <Content Include="Views\Apply\ApplicantRecords.cshtml" />
     <Content Include="Views\Apply\Delete.cshtml" />
-    <Content Include="Views\Apply\EditApplicant.cshtml" />
-    <Content Include="Views\Apply\EditOssuary.cshtml" />
+    <Content Include="Views\Apply\ApplicantEdit.cshtml" />
+    <Content Include="Views\Apply\OssuaryEdit.cshtml" />
     <Content Include="Views\Apply\Index.cshtml" />
-    <Content Include="Views\Apply\Ossuary.cshtml" />
+    <Content Include="Views\Apply\OssuaryRecords.cshtml" />
     <Content Include="Views\Apply\OssuaryDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CemeteryManagementSystem.Models.ApplyModel>
 
 @{
-    ViewBag.Title = "Database";
+    ViewBag.Title = "Records";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -87,13 +87,13 @@
                 @Html.DisplayFor(modelItem => item.selectedPaymentMethod)
             </td>
             <td>
-                @Html.ActionLink("Edit*", "EditApplicant", new { id = item.Id }) |
-                @Html.ActionLink("Details*", "ApplicantDetails", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "DeleteApplicant", new { id = item.Id })
+                @Html.ActionLink("Edit", "ApplicantEdit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "ApplicantDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "ApplicantDelete", new { id = item.Id })
             </td>
         </tr>
     }
 
 </table>
 
-@Html.ActionLink("Ossuary Database", "Ossuary")
+@Html.ActionLink("Ossuary Records", "OssuaryRecords")

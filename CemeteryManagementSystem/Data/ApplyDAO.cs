@@ -7,7 +7,7 @@ namespace CemeteryManagementSystem.Data
 {
     internal class ApplyDAO
     {
-        private string connectionString = @"Data Source=ZED\SQLExpress;Initial Catalog=CemSys;User ID=sa"; // cemsys
+        private string connectionString = @"workstation id=Cem-Sys.mssql.somee.com;packet size=4096;user id=cedricorais_SQLLogin_1;pwd=rdpc31n8xx;data source=Cem-Sys.mssql.somee.com;persist security info=False;initial catalog=Cem-Sys"; // cemsys
 
         public int insertApplicantData(ApplyModel applyModel)
         {
@@ -363,13 +363,13 @@ namespace CemeteryManagementSystem.Data
             }
         }
 
-        internal List<ApplyModel> searchForLast(string searchTerm)
+        internal List<ApplyModel> searchForName(string searchTerm)
         {
             List<ApplyModel> returnList = new List<ApplyModel>();
 
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
-                string sqlQuery = "SELECT * FROM OSSUARY WHERE LASTNAME + FIRSTNAME LIKE @searchFor";
+                string sqlQuery = "SELECT * FROM OSSUARY WHERE LASTNAME + FIRSTNAME + MIDDLENAME LIKE @searchFor";
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, connect);
                 cmd.Parameters.Add("@searchFor", System.Data.SqlDbType.Text).Value = "%" + searchTerm + "%";
