@@ -19,13 +19,16 @@
             <hr />
             <h3>Find Deceased's Ossuary Location, Floor & Section</h3>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="col-xs-3">
+            <div class="form-group">
                 <label for="searchTerm"></label>
                 <div class="input-group">
                     <input type="text" name="searchTerm" id="searchTerm" placeholder="Search Name" class="form-control" />
-                    <span class="input-group-btn">
-                        <input type="submit" value="Search" class="btn btn-primary btn-group" />
-                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-group" />
                 </div>
             </div>
         </div>

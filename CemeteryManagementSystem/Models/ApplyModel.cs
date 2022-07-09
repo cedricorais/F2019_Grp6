@@ -32,6 +32,7 @@ namespace CemeteryManagementSystem.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Date of Birth")]
         public DateTime applicantBirthDate { get; set; }
 
@@ -66,6 +67,7 @@ namespace CemeteryManagementSystem.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Date of Birth")]
         public DateTime deadBirthDate { get; set; }
 
@@ -76,6 +78,7 @@ namespace CemeteryManagementSystem.Models
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Date of Death")]
         public DateTime deathDate { get; set; }
 
