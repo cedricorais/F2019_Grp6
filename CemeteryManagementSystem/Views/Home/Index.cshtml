@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "CemSys - Cemetery Management System";
+    string previousUrl = Request.UrlReferrer.PathAndQuery;
 }
 
 <div class="jumbotron">
@@ -10,82 +11,90 @@
     <p><a href="/Home/About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-@using (Html.BeginForm("SearchForName", "Apply"))
+@if (previousUrl == "/Home/Index")
 {
-    @Html.AntiForgeryToken()
-    
     <div class="container">
         <div class="row">
             <hr />
-            <h3>Find Deceased's Ossuary Location</h3>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label for="searchTerm"></label>
-                <div class="input-group">
-                    <input type="text" name="searchTerm" id="searchTerm" placeholder="Search Name" class="form-control" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md">
-                    <input type="submit" value="Search" class="btn btn-primary btn-group" />
-                </div>
+            <h3><label for="searchTerm">Find Deceased's Ossuary Location</label></h3>
+            <div class="col">
+                <p><a href="../Home/Index" class="btn btn-primary btn-group">Return to Home</a></p>
             </div>
         </div>
     </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.deadFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deadMiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deadLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deadBirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deathDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.selectedLocation)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.selectedFloorNSection)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadMiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deadBirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deathDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.selectedLocation)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.selectedFloorNSection)
+                    </td>*@
+            </tr>
+        }
+
+    </table>
 }
-<hr />
+else
+{
+    using (Html.BeginForm("SearchForName", "Apply"))
+    {
+        @Html.AntiForgeryToken()
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.deadFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadMiddleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadBirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deathDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.selectedLocation)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.selectedFloorNSection)
-        </th>*@
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.deadFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.deadMiddleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.deadLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.deadBirthDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.deathDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.selectedLocation)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.selectedFloorNSection)
-        </td>*@
-    </tr>
+        <div class="container">
+            <div class="row">
+                <hr />
+                <h3><label for="searchTerm">Find Deceased's Ossuary Location</label></h3>
+                <div class="col">
+                    <ul class="nav navbar-nav">
+                        <li><input type="text" name="searchTerm" id="searchTerm" placeholder="Search Name" class="form-control" /></li>
+                        <li><input type="submit" value="Search" class="btn btn-primary btn-group" /></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
 }
-
-</table>

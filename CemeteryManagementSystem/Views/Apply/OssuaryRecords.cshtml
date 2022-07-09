@@ -6,8 +6,8 @@
 }
 
 @*<h2>Ossuary Databases</h2>
-    <div class="row">
-        <div class="container">
+    <div class="container">
+        <div class="row">
             <div class="col">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Ossuary I*", "Ossuary", new { page = 1 })</li>
@@ -27,9 +27,17 @@
     <hr />*@
 
 <h2>Ossuary @ViewBag.Title</h2>
-<p>
-    @Html.ActionLink("Create New", "Index")
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Applicant Records", "ApplicantRecords")</li>
+                <li>@Html.ActionLink("Create New", "Index")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -44,21 +52,21 @@
         <th>
             @Html.DisplayNameFor(model => model.deadMiddleName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deadBirthDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.selectedDeadGender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.deathDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.selectedLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.selectedFloorNSection)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.deadBirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.selectedDeadGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deathDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.selectedLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.selectedFloorNSection)
+            </th>*@
         <th></th>
     </tr>
 
@@ -77,32 +85,30 @@
             <td>
                 @Html.DisplayFor(modelItem => item.deadMiddleName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.deadBirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.selectedDeadGender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.deathDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.selectedLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.selectedFloorNSection)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.deadBirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.selectedDeadGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.deathDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.selectedLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.selectedFloorNSection)
+                </td>*@
             <td>
                 @Html.ActionLink("Edit", "OssuaryEdit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "OssuaryDetails", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "OssuaryDelete", new { id = item.Id })
                 @*@Html.ActionLink("Edit*", "EditOssuary", new { id = item.Id, page = item.page }) |
-                @Html.ActionLink("Details*", "OssuaryDetails", new { id = item.Id, page = item.page }) |
-                @Html.ActionLink("Delete*", "DeleteOssuary", new { id = item.Id, page = item.page })*@
+                    @Html.ActionLink("Details*", "OssuaryDetails", new { id = item.Id, page = item.page }) |
+                    @Html.ActionLink("Delete*", "DeleteOssuary", new { id = item.Id, page = item.page })*@
             </td>
         </tr>
     }
 
 </table>
-
-@Html.ActionLink("Applicant Records", "ApplicantRecords")
