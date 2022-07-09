@@ -14,7 +14,7 @@ namespace CemeteryManagementSystem.Controllers
         {
             List<ApplyModel> applyList = new List<ApplyModel>();
             ApplyDAO applyDao = new ApplyDAO();
-            applyList = applyDao.getOssuaryTable();
+            applyList = applyDao.homeTable();
 
             return View("Index", applyList);
         }

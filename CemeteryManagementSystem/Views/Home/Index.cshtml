@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <hr />
-            <h3>Find Deceased's Ossuary Location, Floor & Section</h3>
+            <h3>Find Deceased's Ossuary Location</h3>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 <label for="searchTerm"></label>
@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <div class="col-md">
-                    <input type="submit" value="Submit" class="btn btn-primary btn-group" />
+                    <input type="submit" value="Search" class="btn btn-primary btn-group" />
                 </div>
             </div>
         </div>
@@ -39,13 +39,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.deadLastName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.deadFirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.deadMiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deadLastName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.deadBirthDate)
@@ -56,22 +56,22 @@
         <th>
             @Html.DisplayNameFor(model => model.selectedLocation)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.selectedFloorNSection)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.deadLastName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.deadFirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.deadMiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deadLastName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.deadBirthDate)
@@ -82,9 +82,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.selectedLocation)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.selectedFloorNSection)
-        </td>
+        </td>*@
     </tr>
 }
 

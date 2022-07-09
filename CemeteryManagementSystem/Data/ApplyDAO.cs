@@ -162,6 +162,42 @@ namespace CemeteryManagementSystem.Data
             return returnList;
         }
 
+        public List<ApplyModel> homeTable()
+        {
+            List<ApplyModel> returnList = new List<ApplyModel>();
+
+            using (SqlConnection connect = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "SELECT deceasedId, lastName, firstName, middleName, birthDate, gender, deathDate, concat([location] + ' - ', floorNSection) as loc FROM OSSUARY";
+
+                SqlCommand cmd = new SqlCommand(sqlQuery, connect);
+                connect.Open();
+                SqlDataReader read = cmd.ExecuteReader();
+
+                if (read.HasRows)
+                {
+                    while (read.Read())
+                    {
+                        ApplyModel applyModel = new ApplyModel();
+                        applyModel.Id = read.GetInt32(0);
+                        applyModel.deadLastName = read.GetString(1);
+                        applyModel.deadFirstName = read.GetString(2);
+                        applyModel.deadMiddleName = read.GetString(3);
+                        applyModel.deadBirthDate = read.GetDateTime(4);
+                        applyModel.selectedDeadGender = read.GetString(5);
+                        applyModel.deathDate = read.GetDateTime(6);
+                        applyModel.selectedLocation = read.GetString(7);
+                        //applyModel.selectedFloorNSection = read.GetString(8);
+
+                        returnList.Add(applyModel);
+
+                    }
+                }
+            }
+
+            return returnList;
+        }
+
         //public List<ApplyModel> combineOssuaryTable()
         //{
         //    List<ApplyModel> returnList = new List<ApplyModel>();
@@ -369,7 +405,7 @@ namespace CemeteryManagementSystem.Data
 
             using (SqlConnection connect = new SqlConnection(connectionString))
             {
-                string sqlQuery = "SELECT * FROM OSSUARY WHERE LASTNAME + FIRSTNAME + MIDDLENAME LIKE @searchFor";
+                string sqlQuery = "SELECT deceasedId, lastName, firstName, middleName, birthDate, gender, deathDate, concat([location] + ' - ', floorNSection) as loc FROM OSSUARY WHERE LASTNAME + FIRSTNAME + MIDDLENAME LIKE @searchFor";
 
                 SqlCommand cmd = new SqlCommand(sqlQuery, connect);
                 cmd.Parameters.Add("@searchFor", System.Data.SqlDbType.Text).Value = "%" + searchTerm + "%";
@@ -389,7 +425,7 @@ namespace CemeteryManagementSystem.Data
                         applyModel.selectedDeadGender = read.GetString(5);
                         applyModel.deathDate = read.GetDateTime(6);
                         applyModel.selectedLocation = read.GetString(7);
-                        applyModel.selectedFloorNSection = read.GetString(8);
+                        //applyModel.selectedFloorNSection = read.GetString(8);
 
                         returnList.Add(applyModel);
 
